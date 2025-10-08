@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultation Modal</title>
+  <style>
+    /* ===== Button Style ===== */
+    .btn {
+      background-color: #0097a7;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      display: inline-block;
+    }
+    .btn:hover {
+      background-color: #007a86;
+    }
+
+    /* ===== Modal Overlay ===== */
+    .modal {
+      display: none; 
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* ===== Modal Box ===== */
+    .modal-content {
+      background: #fff;
+      width: 600px;
+      max-width: 95%;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      position: relative;
+      text-align: center;
+    }
+
+    /* ===== Close Button ===== */
+    .close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 22px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #555;
+    }
+    .close:hover {
+      color: #000;
+    }
+
+    /* ===== Form Styling ===== */
+    .modal-content input,
+    .modal-content textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .modal-content button {
+      background-color: #0097a7;
+      color: #fff;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .modal-content button:hover {
+      background-color: #007a86;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- (Optional: if you also want button on this page) -->
+  <a href="#" class="btn" id="openModalBtn">Consult Now</a>
+
+  <!-- Modal -->
+  <div id="consultModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h2>Expert Guidance Awaits</h2>
+      <p>Transform your healthcare spaces with expert advice. Start your consultation journey today.</p>
+      
+      <form>
+        <input type="text" placeholder="Full Name *" required>
+        <input type="email" placeholder="Email *" required>
+        <input type="tel" placeholder="Phone Number *" required>
+        <input type="text" placeholder="Company *" required>
+        <textarea rows="4" placeholder="Message *" required></textarea>
+        <button type="submit">Submit Request</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById("consultModal");
+    const closeBtn = document.getElementById("closeModal");
+    const openBtn = document.getElementById("openModalBtn");
+
+    function openModal() {
+      modal.style.display = "flex";
+    }
+
+    // Open manually (if button exists on same page)
+    if (openBtn) {
+      openBtn.onclick = function(e) {
+        e.preventDefault();
+        openModal();
+      }
+    }
+
+    // Close modal
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Close on outside click
+    window.onclick = function(event) {
+      if (event.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    // ✅ Auto open if ?consult=true
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get("consult") === "true") {
+      openModal();
+    }
+  </script>
+
+</body>
+</html>

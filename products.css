@@ -1,0 +1,772 @@
+/* ===== General Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+body {
+  line-height: 1.6;
+  background: #f9f9f9;
+  color: #333;
+}
+
+#btn7 {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  z-index: 999;
+  background-color: #065a60;
+  color: #fff;
+  border: none;
+  padding: 14px 18px;
+  font-size: 22px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  opacity: 0;             /* hidden initially */
+  pointer-events: none;   /* prevent click when hidden */
+  transition: opacity 0.4s, transform 0.3s, background 0.3s;
+}
+
+#btn7.show {
+  opacity: 1;            /* fade in */
+  pointer-events: auto;  /* clickable */
+}
+
+#btn7:hover {
+  background-color: #077078;
+  transform: translateY(-2px);
+}
+
+ /* Floating Icons */
+.floating-icons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 999;
+}
+.icon-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.icon-btn.whatsapp { background: #25D366; }
+.icon-btn.message { background: #065a60; }
+.icon-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Chat Box */
+.chat-box {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  overflow: hidden;
+  transform: translateY(120%);
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+}
+.chat-box.active { transform: translateY(0); opacity: 1; }
+.chat-header {
+  padding: 12px;
+  font-weight: bold;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.chat-header span { cursor: pointer; font-size: 18px; color: #222;}
+.chat-body {
+  padding: 10px;
+  height: 250px;
+  overflow-y: auto;
+  background: #f9f9f9;
+}
+.chat-input {
+  display: flex;
+  border-top: 1px solid #ddd;
+}
+.chat-input input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  outline: none;
+}
+.chat-input button {
+  background: transparent;
+  border: none;
+  color: #065a60;
+  font-size: 18px;
+  cursor: pointer;
+  padding: 0 15px;
+}
+
+/* WhatsApp Style */
+.whatsapp-style .chat-header { background: #25D366; }
+.whatsapp-style .chat-input button { color: #25D366; }
+
+
+.bot-msg, .user-msg {
+  margin: 6px 0;
+  padding: 8px 12px;
+  border-radius: 10px;
+  max-width: 80%;
+  font-size: 14px;
+}
+.bot-msg { background: #e5e5e5; align-self: flex-start; }
+.user-msg { background: #065a60; color: #fff; align-self: flex-end; }
+.whatsapp-style .user-msg { background: #25D366; color: #fff; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .chat-box { width: 90%; right: 5%; }
+}
+
+/* ===== Header ===== */
+.header {
+  background: #065a60;
+  color: #fff;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+    /* ðŸ”¹ Topbar */
+    .topbar {
+      background: #077078;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 6px 20px;
+      font-size: 14px;
+    }
+
+    .topbar-left a,
+    .topbar-right a {
+      color: #fff;
+      text-decoration: none;
+      margin-right: 15px;
+      transition: color 0.3s;
+    }
+
+    .topbar-left a:hover,
+    .topbar-right a:hover {
+      color: #ffd700;
+    }
+
+    .topbar-right a {
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    /* ðŸ”¹ Navbar (your existing code, unchanged except margin reset) */
+   .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  flex-wrap: wrap;
+}
+
+    .logo img {
+      height: 60px;
+      display: block;
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      color: #fff;
+      cursor: pointer;
+      z-index: 999;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      transition: max-height 0.3s ease;
+      margin: 0;
+      /* âœ… remove default ul margin */
+    }
+
+    .nav-links li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links li a:hover {
+      color: #ffd700;
+    }
+
+
+    /* ===== âœ… Contact Info Styling ===== */
+    .contact-info.modern-contact {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 0.4rem 0.8rem;
+      border-radius: 8px;
+      backdrop-filter: blur(5px);
+    }
+
+    .contact-info .contact-link {
+      color: #fff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .contact-info .contact-link:hover {
+      color: #ffd700;
+      transform: scale(1.05);
+    }
+
+    .contact-info .phone {
+      font-weight: bold;
+    }
+
+
+    /* ===== Products ===== */
+
+    section {
+      padding: 70px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+      color: #222;
+      position: relative;
+    }
+
+    h2::after {
+      content: "";
+      width: 70px;
+      height: 4px;
+      background: #065a60;
+      display: block;
+      margin: 15px auto 0;
+      border-radius: 2px;
+    }
+
+    h3 {
+  font-size: 24px;
+  color: #065a60;
+  margin-bottom: 15px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 50px;
+  opacity: 0;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.two-col:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.two-col img {
+  width: 100%;
+  border-radius: 10px;
+  opacity: 0;
+  animation: slideInLeft 1s ease forwards;
+}
+
+.two-col:nth-child(2) img {
+  animation-delay: 0.5s;
+}
+
+.two-col div {
+  opacity: 0;
+  animation: slideInRight 1s ease forwards;
+}
+
+.two-col:nth-child(2) div {
+  animation-delay: 0.5s;
+}
+
+/* Keyframes */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(50px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.features {
+  text-align: center;
+  padding: 80px 20px;
+ background: url('img/celling.jpg') no-repeat center center/cover;
+  position: relative;
+  z-index: 1;
+}
+
+.features::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255,255,255,0.7); /* white overlay for readability */
+  z-index: -1;
+}
+
+.features h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: #065a60;
+  position: relative;
+  z-index: 2;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.feature {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature:hover {
+  transform: translateY(-10px);
+}
+
+
+
+    .features, .benefits, .solutions {
+      margin-top: 60px;
+    }
+
+    .feature-grid, .benefit-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .feature, .benefit {
+      background: #fff;
+      padding: 20px;
+      border-left: 4px solid #065a60;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    }
+
+     h2 {
+      text-align: center;
+      font-size: 32px;
+      margin: 40px 0 30px;
+      color: #222;
+    }
+
+/* ===== Solutions Section ===== */
+.solution-cards {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 30px; /* more gap */
+  padding: 15px; /* more padding */
+  
+  /* Hide scrollbar */
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.solution-cards::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}
+
+.solution {
+  flex: 0 0 320px; /* increased from 260px */
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.solution img {
+  width: 100%;
+  height: 200px; /* increased from 160px */
+  object-fit: cover;
+  display: block;
+}
+
+.solution h4 {
+  padding: 16px; /* increased padding */
+  text-align: center;
+  color: #065a60;
+  margin: 0;
+  font-size: 18px; /* bigger font */
+}
+
+.slider-controls button {
+  background: #065a60;
+  color: #fff;
+  border: none;
+  padding: 14px 28px; /* bigger buttons */
+  margin: 0 12px;
+  border-radius: 5px;
+  font-size: 18px; /* bigger font */
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.slider-controls {
+  text-align: center;  /* This centers the buttons */
+  margin: 30px 0 50px;
+}
+
+    .cta {
+  position: relative; /* Needed for overlay positioning */
+  background: url("img/hospi.jpg") center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+  border-radius: 10px;
+  margin: 60px auto;
+  max-width: 1200px;
+  overflow: hidden; /* Prevent overlay from spilling */
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("img/hospi.jpg") center/cover no-repeat;
+  transition: transform 0.6s ease; 
+  z-index: 0;
+}
+
+
+.cta:hover::before {
+  transform: scale(1.1);
+}
+
+
+.cta::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 3, 7, 0.6); /* Blue overlay */
+  border-radius: 10px;
+  z-index: 1;
+}
+
+.cta h2,
+.cta p,
+.cta .btn {
+  position: relative;
+  z-index: 2; /* Keep content above overlay */
+}
+
+.cta h2 {
+  color: #fff;
+}
+
+.cta h2::after {
+  background: #fff;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 28px;
+  background: #065a60;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  font-size: 16px;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn:hover {
+  background: #003a85;
+  transform: scale(1.05);
+}
+
+
+        
+/* ===== Footer ===== */
+footer {
+      background: #222;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 15px;
+      /* ðŸ”½ reduced gap */
+    }
+
+    .footer-logo,
+    .footer-column,
+    .contact-info {
+      flex: 1 1 220px;
+    }
+
+    .footer-logo img {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    .footer-logo p {
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .footer-column {
+      flex: 1 1 200px;
+    }
+
+    .footer-column h4 {
+      margin-bottom: 15px;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      /* left & right alignment */
+      align-items: center;
+      flex-wrap: wrap;
+      /* responsive on small screens */
+      margin-top: 20px;
+      padding-top: 15px;
+      border-top: 1px solid #444;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .footer-bottom p {
+      margin: 5px 0;
+    }
+
+    .footer-column ul {
+      list-style: none;
+    }
+
+    .footer-column ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-column ul li a {
+      text-decoration: none;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    .footer-column ul li a:hover {
+      color: #fff;
+    }
+
+    .contact-info p,
+    .contact-info a {
+      font-size: 14px;
+      color: #ccc;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .contact-info a:hover {
+      color: #fff;
+    }
+
+    .social-icons a {
+      display: inline-block;
+      margin-right: 10px;
+      font-size: 18px;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #ccc;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      /* copyright left / links right */
+      align-items: center;
+      width: 100%;
+      /* span full width */
+      margin-top: 20px;
+      padding: 2px 0;
+      /* small vertical padding */
+      border-top: 1px solid #444;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    .footer-bottom a {
+      color: #aaa;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer-bottom a:hover {
+      color: #fff;
+    }
+
+    /* Recent posts spacing */
+    .recent-posts {
+      margin-bottom: 20px;
+      /* âœ… Adds gap before "Get In Touch" */
+    }
+
+    .recent-posts ul {
+      list-style: none;
+      padding: 0;
+      margin-left: -74px;
+    }
+
+    .recent-posts ul li {
+      margin-bottom: 10px;
+      /* âœ… More breathing space */
+    }
+
+    .recent-posts ul li a {
+      color: #ccc;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .recent-posts ul li a:hover {
+      color: #fff;
+    }
+     @media (max-width: 480px) {
+      .recent-posts ul {
+        margin-left: -2px;
+        /* âœ… adjust for small screens */
+      }
+    }
+    /* ===== Responsive ===== */
+
+   @media (max-width: 768px) {
+
+      /* Show hamburger */
+      .menu-toggle {
+        display: block;
+        margin-left: auto;
+      }
+
+      /* Collapse nav links by default */
+      .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        background: #065a60;
+        overflow: hidden;
+        max-height: 0;
+      }
+
+      /* Expanded state */
+      .nav-links.active {
+        max-height: 1000px;
+        padding: 0.5rem 0 1rem;
+        /* smaller padding so topbar looks connected */
+      }
+
+      /* Stack menu items */
+      .nav-links ul {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-links ul li {
+        width: 100%;
+        padding: 0.5rem 1rem;
+      }
+
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 40px !important;
+        }
+      }
+
+      .topbar {
+        display: none;
+      }
+    }
+
+    

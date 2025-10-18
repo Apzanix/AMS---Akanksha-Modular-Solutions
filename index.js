@@ -163,7 +163,7 @@ setInterval(showNextTestimonial, 5000);
       if (e.key === "Enter") handleChat("messageInput", "messageChat");
     });
   }
-});
+
 
  const modal = document.getElementById("consultModal");
     const openBtn = document.getElementById("openModal");

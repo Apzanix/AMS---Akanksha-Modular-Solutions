@@ -124,8 +124,30 @@ body {
 }
 
 /* WhatsApp Style */
-.whatsapp-style .chat-header { background: #25D366; }
-.whatsapp-style .chat-input button { color: #25D366; }
+.whatsapp-float {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  bottom: 97px;
+  right: 20px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+  text-decoration: none; /* ✅ removes underline */
+}
+
+.whatsapp-float:hover {
+  background-color: #20ba5a;
+  transform: scale(1.1);
+}
 
 
 .bot-msg, .user-msg {

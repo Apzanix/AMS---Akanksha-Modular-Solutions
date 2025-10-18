@@ -122,9 +122,30 @@ body {
   padding: 0 15px;
 }
 
-/* WhatsApp Style */
-.whatsapp-style .chat-header { background: #25D366; }
-.whatsapp-style .chat-input button { color: #25D366; }
+.whatsapp-float {
+  position: fixed;
+  width: 55px;
+  height: 55px;
+  bottom: 97px;
+  right: 20px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, background 0.3s ease;
+  text-decoration: none; /* ✅ removes underline */
+}
+
+.whatsapp-float:hover {
+  background-color: #20ba5a;
+  transform: scale(1.1);
+}
 
 
 .bot-msg, .user-msg {
@@ -154,7 +175,7 @@ body {
   z-index: 1000;
 }
 
-/* ðŸ”¹ Topbar */
+/* Topbar */
 .topbar {
   background: #077078;
   display: flex;
@@ -182,7 +203,7 @@ body {
   font-size: 14px;
 }
 
-/* ðŸ”¹ Navbar (your existing code, unchanged except margin reset) */
+/* Navbar (your existing code, unchanged except margin reset) */
 .navbar {
   display: flex;
   align-items: center;
@@ -1172,3 +1193,148 @@ footer {
     .testimonial-card p { font-size: 0.9rem; }
     .testimonial-container { height: 200px; }
   }
+/* About Main */
+
+  
+    /* Hero Section */
+    .intro {
+  background-image: url("img/337091784_513765787402103_2930521784320360138_n.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;      
+  background-position: center; 
+  text-align: center;
+  padding: 100px 20px;
+}
+    
+
+   .intro h2 {
+  color: #065a60;
+  font-size: 36px;
+  z-index: 2;
+  text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.8);
+}
+
+    .intro h2::after {
+      background: #065a60;
+    }
+
+    .intro h3 {
+      color: #065a60;
+    }
+
+    .intro p {
+      max-width: 800px;
+      margin: 10px auto;
+      color: white;
+    }
+
+    /* Mission / Vision */
+    .mission-vision {
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .mission, .vision {
+      flex: 1;
+      min-width: 280px;
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      border-top: 5px solid #065a60;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .mission:hover, .vision:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.15);
+    }
+
+    .mission h4, .vision h4 {
+      font-size: 20px;
+      color: #065a60;
+      margin: 15px 0;
+    }
+
+    .mission .icon, .vision .icon {
+      font-size: 38px;
+      color: #065a60;
+    }
+
+    /* Expertise */
+    .expertise {
+  background: #eef3fb;
+  margin-top: -45px;
+  padding: 50px 30px;
+  border-radius: 10px;
+  border-left: 6px solid #065a60;
+}
+
+    .expertise h4 {
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #065a60;
+      text-align: center;
+    }
+
+    .expertise p {
+      text-align: justify;
+    }
+
+    /* What we do */
+    .what-we-do {
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .what-we-do h4 {
+      font-size: 24px;
+      margin-bottom: 12px;
+      color: #065a60;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .card h5 {
+      font-size: 18px;
+      color: #065a60;
+      margin-bottom: 10px;
+    }
+
+    .btnabout {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 14px 28px;
+      background: #065a60;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-size: 16px;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #003a85;
+      transform: scale(1.07);
+    }

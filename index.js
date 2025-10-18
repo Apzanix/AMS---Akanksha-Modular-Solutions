@@ -78,28 +78,6 @@ setInterval(showNextTestimonial, 5000);
 
   // Floating Chatbot Script
 
-  document.addEventListener("DOMContentLoaded", () => {
-  // ===== Floating Chat Buttons =====
-  const whatsappBtn = document.getElementById("whatsappBtn");
-  const messageBtn = document.getElementById("messageBtn");
-  const whatsappBox = document.getElementById("whatsappBox");
-  const messageBox = document.getElementById("messageBox");
-  const closeWhatsapp = document.getElementById("closeWhatsapp");
-  const closeMessage = document.getElementById("closeMessage");
-
-  // Open / Close WhatsApp Box
-  if (whatsappBtn && whatsappBox) {
-    whatsappBtn.addEventListener("click", () => {
-      whatsappBox.classList.toggle("active");
-      if (messageBox) messageBox.classList.remove("active");
-    });
-  }
-
-  if (closeWhatsapp && whatsappBox) {
-    closeWhatsapp.addEventListener("click", () => {
-      whatsappBox.classList.remove("active");
-    });
-  }
 
   // Open / Close Message Box
   if (messageBtn && messageBox) {
@@ -166,13 +144,14 @@ setInterval(showNextTestimonial, 5000);
   }
 
   // WhatsApp Send
-  const whatsappSend = document.getElementById("whatsappSend");
-  const whatsappInput = document.getElementById("whatsappInput");
-  if (whatsappSend && whatsappInput) {
-    whatsappSend.addEventListener("click", () => handleChat("whatsappInput", "whatsappChat"));
-    whatsappInput.addEventListener("keypress", e => {
-      if (e.key === "Enter") handleChat("whatsappInput", "whatsappChat");
-    });
+    function redirectWhatsapp() {
+    const input = document.getElementById("whatsappInput").value.trim();
+    const message = encodeURIComponent(input);
+    const phone = "918328979099"; // with country code (91 for India)
+    const url = message
+      ? `https://wa.me/${phone}?text=${message}`
+      : `https://wa.me/${phone}`;
+    window.open(url, "_blank");
   }
 
   // Message Send
